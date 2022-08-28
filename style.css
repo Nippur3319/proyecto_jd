@@ -37,8 +37,9 @@ input[type=number] {
 }
 
 .container {
-    display: block;
-    padding: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
     
     
 }
@@ -111,6 +112,6 @@ input[type=number] {
 }
 
 .radio-toolbar button {
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 1 / 3;
 }
