@@ -11,7 +11,7 @@ body {
     color: #050505;
     font-family: Raleway;
     font-weight: 400;
-    width: 600px;
+    max-width: 600px;
     margin: auto;
     
 }
@@ -36,10 +36,11 @@ input[type=number] {
     width: 30px;
 }
 
-.container, input{
-    display: flex;
-    font-size: larger;
-    justify-content: center;
+.container {
+    display: block;
+    padding: 10px;
+    
+    
 }
 
 .radio-toolbar{
@@ -110,6 +111,6 @@ input[type=number] {
 }
 
 .radio-toolbar button {
-    grid-row: 3;
-    grid-column: 1 / 4;
+    grid-row: 2;
+    grid-column: 1 / 3;
 }
