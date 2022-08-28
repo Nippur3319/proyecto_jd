@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Proyecto JD</title>
+</head>
+<body>
+    
+    <H1>Calculador de escalas penales</H1>
+    <div class="container">
+
+        <input type="number" min="0" pattern="^[0-9]+" id="aniosMin" name="aniosMin" onfocus="checkFocus('aniosMin')" />
+        <label for="aniosMin">Años</label>
+        
+        <input type="number" min="0" pattern="^[0-9]+" id="mesesMin" name="mesesMin" onfocus="checkFocus('mesesMin')"/>
+        <label for="mesesMin">Meses</label>
+        
+        <select name="diasMin" id="diasMin" onfocus="checkFocus('diasMin')">
+            <option value="0">0</option>
+            <option value="15">15</option>
+        </select>
+        <label for="diasMin">Días</label>
+    </div>
+    
+    <!-- se tendría que agregar un evento onclick en el HTML? con un document.getelementbyid('menosmitad').value -->
+    <div class="radio-toolbar">
+        
+        <div id="atenuantes">Atenuantes
+            <input type="radio" name="modificador" id="menostercio" value="menostercio" onclick="establecerFactor()">
+            <label for="menostercio">Reducir en un tercio</label>
+
+            <input type="radio" name="modificador" id="menosmitad" value="menosmitad" onclick="establecerFactor()">
+            <label for="menosmitad">Reducir a la mitad</label>
+
+        </div>
+        <div id="agravantes">Agravantes
+
+            <input type="radio" name="modificador" id="mastercio" value="mastercio" onclick="establecerFactor()">
+            <label for="mastercio">Aumentar en un tercio</label>
+            
+            <input type="radio" name="modificador" id="masmedio" value="masmedio" onclick="establecerFactor()">
+            <label for="masmedio">Aumentar en un medio</label>
+            
+            <input type="radio" name="modificador" id="doble" value="doble" onclick="establecerFactor()">
+            <label for="doble">Aumentar al doble</label>
+        </div>
+        
+        <div id="resultados"></div>
+        <button onClick="window.location.reload();">Limpiar</button>
+
+    </div>
+
+
+    
+    
+    <script src="./main.js"></script>
+</body>
+
+</html>
