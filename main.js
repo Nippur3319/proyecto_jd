@@ -1,3 +1,7 @@
+window.onload = function () {
+  document.getElementById("aniosMin").focus();
+};
+
 let minimo;
 let resultado;
 let factor;
@@ -15,6 +19,11 @@ function establecerFactor() {
   }
 
   switch (modificador) {
+    case "auntercio":
+      descripcion = "reducir a un tercio";
+      factor = 3;
+      break;
+
     case "menosmitad":
       descripcion = "reducir a la mitad";
       factor = 2;
@@ -35,6 +44,7 @@ function establecerFactor() {
       descripcion = "aumentar al doble";
       factor = 2;
       break;
+
     default:
       break;
   }
@@ -61,6 +71,11 @@ function calcular() {
     resultado = mesesTotMin + mesesTotMin / factor;
   }
 
+  if (modificador == "auntercio") {
+    // si lo reduzco a un tercio: le resto 2 tercios
+    resultado = mesesTotMin - (mesesTotMin / factor) * 2;
+  }
+
   if (modificador == "doble") {
     // si lo duplico
     resultado = mesesTotMin * 2;
@@ -84,6 +99,11 @@ function calcular() {
     // si le resto un tercio o un medio: le resto la fracción
     diasRestantes = decimalMeses * 30 + diasMin + diasMin / factor;
   }
+  if (modificador == "auntercio") {
+    // si le resto dos tercios: le resto la fracción por dos
+    diasRestantes = decimalMeses * 30 + diasMin + (diasMin / factor) * 2;
+  }
+
   if (modificador == "doble") {
     // si lo duplico
 
@@ -110,7 +130,7 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
     Math.trunc(resultadoEnMeses) === 0 &&
     Math.trunc(Math.round(diasRestantes)) === 0
   ) {
-    resultados.innerHTML = "todo da cero paparulo";
+    resultados.innerHTML = "ingrese un período";
   }
 
   // 2- si año y mes son cero y días son distinto de cero
@@ -128,7 +148,11 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
     Math.trunc(resultadoEnMeses) !== 0 &&
     Math.trunc(Math.round(diasRestantes)) === 0
   ) {
-    resultados.innerHTML = `${Math.trunc(resultadoEnMeses)} meses`;
+    if (resultadoEnMeses === 1) {
+      resultados.innerHTML = ` ${Math.trunc(resultadoEnMeses)} mes`;
+    } else {
+      resultados.innerHTML = ` ${Math.trunc(resultadoEnMeses)} meses`;
+    }
   }
 
   // 4- si año es cero pero mes no es cero pero días no es cero
@@ -137,9 +161,15 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
     Math.trunc(resultadoEnMeses) !== 0 &&
     Math.trunc(Math.round(diasRestantes)) !== 0
   ) {
-    resultados.innerHTML = `${Math.trunc(
-      resultadoEnMeses
-    )} meses y ${Math.trunc(Math.round(diasRestantes))} dias`;
+    if (resultadoEnMeses === 1) {
+      resultados.innerHTML = ` ${Math.trunc(
+        resultadoEnMeses
+      )} mes y ${Math.trunc(Math.round(diasRestantes))} dias`;
+    } else {
+      resultados.innerHTML = ` ${Math.trunc(
+        resultadoEnMeses
+      )} meses y ${Math.trunc(Math.round(diasRestantes))} dias`;
+    }
   }
 
   // 5- si año no es cero pero mes es cero pero días es cero
@@ -148,7 +178,11 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
     Math.trunc(resultadoEnMeses) === 0 &&
     Math.trunc(Math.round(diasRestantes)) === 0
   ) {
-    resultados.innerHTML = `${resultadoEnAnios} años`;
+    if (resultadoEnAnios === 1) {
+      resultados.innerHTML = `${resultadoEnAnios} año`;
+    } else {
+      resultados.innerHTML = `${resultadoEnAnios} años`;
+    }
   }
 
   // 6- si año no es cero pero mes no es cero pero días no es cero
@@ -157,9 +191,21 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
     Math.trunc(resultadoEnMeses) !== 0 &&
     Math.trunc(Math.round(diasRestantes)) !== 0
   ) {
-    resultados.innerHTML = `${resultadoEnAnios} años y ${Math.trunc(
-      resultadoEnMeses
-    )} meses y ${Math.trunc(Math.round(diasRestantes))} dias`;
+    if (resultadoEnAnios === 1 && resultadoEnMeses === 1) {
+      resultados.innerHTML = `${resultadoEnAnios} año, ${Math.trunc(
+        resultadoEnMeses
+      )} mes y ${Math.trunc(Math.round(diasRestantes))} dias`;
+    }
+    if (resultadoEnAnios === 1 && resultadoEnMeses !== 1) {
+      resultados.innerHTML = `${resultadoEnAnios} año, ${Math.trunc(
+        resultadoEnMeses
+      )} meses y ${Math.trunc(Math.round(diasRestantes))} dias`;
+    }
+    if (resultadoEnAnios !== 1 && resultadoEnMeses !== 1) {
+      resultados.innerHTML = `${resultadoEnAnios} años, ${Math.trunc(
+        resultadoEnMeses
+      )} meses y ${Math.trunc(Math.round(diasRestantes))} dias`;
+    }
   }
   // 7- si año no es cero mes no es cero pero días es cero
   if (
@@ -167,9 +213,26 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
     Math.trunc(resultadoEnMeses) !== 0 &&
     Math.trunc(Math.round(diasRestantes)) === 0
   ) {
-    resultados.innerHTML = `${resultadoEnAnios} años y ${Math.trunc(
-      resultadoEnMeses
-    )} meses`;
+    if (resultadoEnAnios === 1 && resultadoEnMeses === 1) {
+      resultados.innerHTML = `${resultadoEnAnios} año y ${Math.trunc(
+        resultadoEnMeses
+      )} mes`;
+    }
+    if (resultadoEnAnios !== 1 && resultadoEnMeses !== 1) {
+      resultados.innerHTML = `${resultadoEnAnios} años y ${Math.trunc(
+        resultadoEnMeses
+      )} meses`;
+    }
+    if (resultadoEnAnios === 1 && resultadoEnMeses !== 1) {
+      resultados.innerHTML = `${resultadoEnAnios} año y ${Math.trunc(
+        resultadoEnMeses
+      )} meses`;
+    }
+    if (resultadoEnAnios !== 1 && resultadoEnMeses === 1) {
+      resultados.innerHTML = `${resultadoEnAnios} años y ${Math.trunc(
+        resultadoEnMeses
+      )} mes`;
+    }
   }
 
   // 8- si año no es cero pero mes es cero pero días no es cero
@@ -187,7 +250,7 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
 function checkFocus(option) {
   if (option === "aniosMin" || option === "mesesMin") {
     let inputDias = document.getElementById("diasMin");
-    inputDias.setAttribute("disabled", "");
+    //inputDias.setAttribute("disabled", "");
   } else {
     let inputAnios = document.getElementById("aniosMin");
     let inputMeses = document.getElementById("mesesMin");
@@ -195,4 +258,10 @@ function checkFocus(option) {
     inputMeses.setAttribute("disabled", "");
     inputDias.setAttribute("enabled", "");
   }
+}
+
+function btnLimpiarClick() {
+  window.location.reload();
+  document.getElementById("diasMin").setAttribute("enabled", "");
+  document.getElementById("aniosMin").focus();
 }

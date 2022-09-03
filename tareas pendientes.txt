@@ -1,0 +1,5 @@
+-togglear el botón limpiar
+-incorporarlo a una página con las demás herramientas
+-agregar un botón de expandir en los múltiplos de 10 en la calculadora de plazos de preventiva
+-publicar el sitio web o pedir q lo agreguen a la pág
+-programar que cuando el año o mes son singular diga "año" y "mes" y no "años" y "meses"

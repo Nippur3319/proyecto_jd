@@ -9,13 +9,13 @@
 </head>
 <body>
     
-    <H1>Calculador de escalas penales</H1>
+    <H1>Calculadora de tiempos penales</H1>
     <div class="container">
 
-        <input type="number" min="0" pattern="^[0-9]+" id="aniosMin" name="aniosMin" onfocus="checkFocus('aniosMin')" />
+        <input type="number" inputmode="numeric" min="0" pattern="^[0-9]+" id="aniosMin" name="aniosMin" onfocus="checkFocus('aniosMin')" />
         
         
-        <input type="number" min="0" pattern="^[0-9]+" id="mesesMin" name="mesesMin" onfocus="checkFocus('mesesMin')"/>
+        <input type="number" inputmode="numeric" min="0" pattern="^[0-9]+" id="mesesMin" name="mesesMin" onfocus="checkFocus('mesesMin')"/>
         
         <select name="diasMin" id="diasMin" onfocus="checkFocus('diasMin')">
             <option value="0">0</option>
@@ -26,31 +26,35 @@
         <label for="diasMin">Días</label>
     </div>
     
-    <!-- se tendría que agregar un evento onclick en el HTML? con un document.getelementbyid('menosmitad').value -->
+    
     <div class="radio-toolbar">
         
-        <div id="atenuantes">Atenuantes
+        <div id="resultados"></div>
+        
+        <div id="atenuantes">Reducir
             <input type="radio" name="modificador" id="menostercio" value="menostercio" onclick="establecerFactor()">
-            <label for="menostercio">Reducir en un tercio</label>
+            <label for="menostercio">En un tercio</label>
 
             <input type="radio" name="modificador" id="menosmitad" value="menosmitad" onclick="establecerFactor()">
-            <label for="menosmitad">Reducir a la mitad</label>
+            <label for="menosmitad">A la mitad</label>
+
+            <input type="radio" name="modificador" id="auntercio" value="auntercio" onclick="establecerFactor()">
+            <label for="auntercio">A un tercio</label>
 
         </div>
-        <div id="agravantes">Agravantes
+        <div id="agravantes">Aumentar
 
             <input type="radio" name="modificador" id="mastercio" value="mastercio" onclick="establecerFactor()">
-            <label for="mastercio">Aumentar en un tercio</label>
+            <label for="mastercio">En un tercio</label>
             
             <input type="radio" name="modificador" id="masmedio" value="masmedio" onclick="establecerFactor()">
-            <label for="masmedio">Aumentar en un medio</label>
+            <label for="masmedio">En un medio</label>
             
             <input type="radio" name="modificador" id="doble" value="doble" onclick="establecerFactor()">
-            <label for="doble">Aumentar al doble</label>
+            <label for="doble">Al doble</label>
         </div>
         
-        <div id="resultados"></div>
-        <button onClick="window.location.reload();">Limpiar</button>
+        <button onClick="btnLimpiarClick()">Limpiar</button>
 
     </div>
 
