@@ -11,39 +11,40 @@
     
     <H1>Calculadora de tiempos penales</H1>
     <div class="container">
+        <form action="">
 
-        <input type="number" inputmode="numeric" min="0" pattern="^[0-9]+" id="aniosMin" name="aniosMin" onfocus="checkFocus('aniosMin')" />
-        
-        
-        <input type="number" inputmode="numeric" min="0" pattern="^[0-9]+" id="mesesMin" name="mesesMin" onfocus="checkFocus('mesesMin')"/>
-        
-        <select name="diasMin" id="diasMin" onfocus="checkFocus('diasMin')">
-            <option value="0">0</option>
-            <option value="15">15</option>
-        </select>
-        <label for="aniosMin">Años</label>
-        <label for="mesesMin">Meses</label>
-        <label for="diasMin">Días</label>
+            <input type="number" inputmode="numeric" max="50" min="0" pattern="^[0-9]+" id="aniosMin" name="aniosMin" onfocus="checkFocus('aniosMin')" />
+            
+            
+            <input type="number" inputmode="numeric" max="12" min="0" pattern="^[0-9]+" id="mesesMin" name="mesesMin" onfocus="checkFocus('mesesMin')"/>
+            
+            <select name="diasMin" id="diasMin" onfocus="checkFocus('diasMin')">
+                <option value="0">0</option>
+                <option value="15">15</option>
+            </select>
+            <label for="aniosMin">Años</label>
+            <label for="mesesMin">Meses</label>
+            <label for="diasMin">Días</label>
+            <button id="btnEnviar">Enviar</button>
+        </form>
     </div>
     
     
     <div class="radio-toolbar">
         
-        <div id="resultados"></div>
-        
         <div id="atenuantes">Reducir
             <input type="radio" name="modificador" id="menostercio" value="menostercio" onclick="establecerFactor()">
             <label for="menostercio">En un tercio</label>
-
+            
             <input type="radio" name="modificador" id="menosmitad" value="menosmitad" onclick="establecerFactor()">
             <label for="menosmitad">A la mitad</label>
-
+            
             <input type="radio" name="modificador" id="auntercio" value="auntercio" onclick="establecerFactor()">
             <label for="auntercio">A un tercio</label>
-
+            
         </div>
         <div id="agravantes">Aumentar
-
+            
             <input type="radio" name="modificador" id="mastercio" value="mastercio" onclick="establecerFactor()">
             <label for="mastercio">En un tercio</label>
             
@@ -54,10 +55,12 @@
             <label for="doble">Al doble</label>
         </div>
         
+        <div id="resultados"></div>
+        
         <button onClick="btnLimpiarClick()">Limpiar</button>
-
+        
     </div>
-
+    
 
     
     

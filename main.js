@@ -62,21 +62,22 @@ function calcular() {
   let mesesTotMin = aniosMin * 12 + mesesMin;
 
   // bifurcacion para ver que tipo de operaciòn es(suma resta) y en su caso qué fracción le aplico
-  if (modificador == "menostercio" || modificador == "menosmitad") {
+  if (modificador === "menostercio" || modificador === "menosmitad") {
     // si le resto un tercio o un medio: le resto la fracción
     resultado = mesesTotMin - mesesTotMin / factor;
   }
-  if (modificador == "mastercio" || modificador == "masmedio") {
+
+  if (modificador === "mastercio" || modificador === "masmedio") {
     // si le sumo un tercio o un medio: le sumo la fracción
     resultado = mesesTotMin + mesesTotMin / factor;
   }
 
-  if (modificador == "auntercio") {
+  if (modificador === "auntercio") {
     // si lo reduzco a un tercio: le resto 2 tercios
     resultado = mesesTotMin - (mesesTotMin / factor) * 2;
   }
 
-  if (modificador == "doble") {
+  if (modificador === "doble") {
     // si lo duplico
     resultado = mesesTotMin * 2;
   }
@@ -91,22 +92,21 @@ function calcular() {
   let decimalMeses = resultadoEnMeses - Math.trunc(resultadoEnMeses);
 
   // el resto de los días en caso de haber los calculo y en su caso los sumo
-  if (modificador == "menostercio" || modificador == "menosmitad") {
+  if (modificador === "menostercio" || modificador === "menosmitad") {
     // si le resto un tercio o un medio: le resto la fracción
     diasRestantes = decimalMeses * 30 + diasMin - diasMin / factor;
   }
-  if (modificador == "mastercio" || modificador == "masmedio") {
+  if (modificador === "mastercio" || modificador === "masmedio") {
     // si le resto un tercio o un medio: le resto la fracción
     diasRestantes = decimalMeses * 30 + diasMin + diasMin / factor;
   }
-  if (modificador == "auntercio") {
+  if (modificador === "auntercio") {
     // si le resto dos tercios: le resto la fracción por dos
     diasRestantes = decimalMeses * 30 + diasMin + (diasMin / factor) * 2;
   }
 
-  if (modificador == "doble") {
+  if (modificador === "doble") {
     // si lo duplico
-
     diasRestantes = decimalMeses * 30 + diasMin * 2;
     // console.log(resultado,diasRestantes,decimalMeses,diasMin)
   }
@@ -124,6 +124,7 @@ function calcular() {
 function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
   let resultados = document.getElementById("resultados");
 
+
   // 1- si año y mes y días son cero
   if (
     resultadoEnAnios === 0 &&
@@ -139,7 +140,7 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
     Math.trunc(resultadoEnMeses) === 0 &&
     Math.trunc(Math.round(diasRestantes)) !== 0
   ) {
-    resultados.innerHTML = `${Math.trunc(Math.floor(diasRestantes))} dias`;
+    resultados.innerHTML = `${Math.trunc(Math.floor(diasRestantes))} días`;
   }
 
   // 3- si año es cero pero mes no es cero pero días si es cero
@@ -164,7 +165,7 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
     if (resultadoEnMeses === 1) {
       resultados.innerHTML = ` ${Math.trunc(
         resultadoEnMeses
-      )} mes y ${Math.trunc(Math.round(diasRestantes))} dias`;
+      )} mes y ${Math.trunc(Math.round(diasRestantes))} días`;
     } else {
       resultados.innerHTML = ` ${Math.trunc(
         resultadoEnMeses
@@ -194,17 +195,17 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
     if (resultadoEnAnios === 1 && resultadoEnMeses === 1) {
       resultados.innerHTML = `${resultadoEnAnios} año, ${Math.trunc(
         resultadoEnMeses
-      )} mes y ${Math.trunc(Math.round(diasRestantes))} dias`;
+      )} mes y ${Math.trunc(Math.round(diasRestantes))} días`;
     }
     if (resultadoEnAnios === 1 && resultadoEnMeses !== 1) {
       resultados.innerHTML = `${resultadoEnAnios} año, ${Math.trunc(
         resultadoEnMeses
-      )} meses y ${Math.trunc(Math.round(diasRestantes))} dias`;
+      )} meses y ${Math.trunc(Math.round(diasRestantes))} días`;
     }
     if (resultadoEnAnios !== 1 && resultadoEnMeses !== 1) {
       resultados.innerHTML = `${resultadoEnAnios} años, ${Math.trunc(
         resultadoEnMeses
-      )} meses y ${Math.trunc(Math.round(diasRestantes))} dias`;
+      )} meses y ${Math.trunc(Math.round(diasRestantes))} días`;
     }
   }
   // 7- si año no es cero mes no es cero pero días es cero
@@ -243,7 +244,7 @@ function setResults(resultadoEnAnios, resultadoEnMeses, diasRestantes) {
   ) {
     resultados.innerHTML = `${resultadoEnAnios} años y ${Math.trunc(
       Math.round(diasRestantes)
-    )} dias`;
+    )} días`;
   }
 }
 
